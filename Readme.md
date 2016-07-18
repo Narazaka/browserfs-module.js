@@ -11,10 +11,9 @@
 [![devDependency Status](https://david-dm.org/Narazaka/browserfs-module.js/dev-status.svg)](https://david-dm.org/Narazaka/browserfs-module.js#info=devDependencies)
 [![Travis Build Status](https://travis-ci.org/Narazaka/browserfs-module.js.svg)](https://travis-ci.org/Narazaka/browserfs-module.js)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/Narazaka/browserfs-module.js?svg=true)](https://ci.appveyor.com/project/Narazaka/browserfs-module-js)
-[![codecov.io](https://codecov.io/github/Narazaka/browserfs-module.js/coverage.svg?branch=master)](https://codecov.io/github/Narazaka/browserfs-module.js?branch=master)
 [![Code Climate](https://codeclimate.com/github/Narazaka/browserfs-module.js/badges/gpa.svg)](https://codeclimate.com/github/Narazaka/browserfs-module.js)
 
-require() with BrowserFS
+[require()](https://github.com/nodejs/node) with [BrowserFS](https://github.com/jvilk/BrowserFS)
 
 ## Install
 
@@ -50,10 +49,6 @@ var a = Module._load("/a");
 console.log(a()); // "bb"
 </script>
 ```
-
-## API
-
-[API Document](https://doc.esdoc.org/github.com/Narazaka/browserfs-module.js/)
 
 ## License
 
