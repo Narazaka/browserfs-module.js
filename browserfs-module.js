@@ -274,7 +274,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// 'node_modules' character codes reversed
 	var nmChars = [115, 101, 108, 117, 100, 111, 109, 95, 101, 100, 111, 110];
 	var nmLen = nmChars.length;
-	if (({"execPath":'/node',"env":{}}).platform === 'win32') {
+	if (__webpack_require__(77).BFSRequire('process').platform === 'win32') {
 	  // 'from' is the __dirname of the module.
 	  Module._nodeModulePaths = function (from) {
 	    // guarantee that 'from' is absolute.
@@ -446,7 +446,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var module = new Module(filename, parent);
 	
 	  if (isMain) {
-	    ({"execPath":'/node',"env":{}}).mainModule = module;
+	    __webpack_require__(77).BFSRequire('process').mainModule = module;
 	    module.id = '.';
 	  }
 	
@@ -512,7 +512,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return Module._load(path, this, /* isMain */false);
 	};
 	
-	// Resolved path to process.argv[1] will be lazily placed here
+	// Resolved path to require('browserfs').BFSRequire('process').argv[1] will be lazily placed here
 	// (needed for setting breakpoint when called with --debug-brk)
 	var resolvedArgv;
 	
@@ -554,11 +554,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    displayErrors: true
 	  });
 	
-	  if (({"execPath":'/node',"env":{}})._debugWaitConnect) {
+	  if (__webpack_require__(77).BFSRequire('process')._debugWaitConnect) {
 	    if (!resolvedArgv) {
 	      // we enter the repl if we're not given a filename argument.
-	      if (({"execPath":'/node',"env":{}}).argv[1]) {
-	        resolvedArgv = Module._resolveFilename(({"execPath":'/node',"env":{}}).argv[1], null);
+	      if (__webpack_require__(77).BFSRequire('process').argv[1]) {
+	        resolvedArgv = Module._resolveFilename(__webpack_require__(77).BFSRequire('process').argv[1], null);
 	      } else {
 	        resolvedArgv = 'repl';
 	      }
@@ -566,7 +566,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    // Set breakpoint on module start
 	    if (filename === resolvedArgv) {
-	      delete ({"execPath":'/node',"env":{}})._debugWaitConnect;
+	      delete __webpack_require__(77).BFSRequire('process')._debugWaitConnect;
 	      var Debug = vm.runInDebugContext('Debug');
 	      Debug.setBreakPoint(compiledWrapper, 0, 0);
 	    }
@@ -600,25 +600,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	//Native extension for .node
 	Module._extensions['.node'] = function (module, filename) {
-	  return ({"execPath":'/node',"env":{}}).dlopen(module, path._makeLong(filename));
+	  return __webpack_require__(77).BFSRequire('process').dlopen(module, path._makeLong(filename));
 	};
 	
 	// bootstrap main module.
 	Module.runMain = function () {
 	  // Load the main module--the command line argument.
-	  Module._load(({"execPath":'/node',"env":{}}).argv[1], null, true);
+	  Module._load(__webpack_require__(77).BFSRequire('process').argv[1], null, true);
 	  // Handle any nextTicks added in the first tick of the program
-	  ({"execPath":'/node',"env":{}})._tickCallback();
+	  __webpack_require__(77).BFSRequire('process')._tickCallback();
 	};
 	
 	Module._initPaths = function () {
-	  var isWindows = ({"execPath":'/node',"env":{}}).platform === 'win32';
+	  var isWindows = __webpack_require__(77).BFSRequire('process').platform === 'win32';
 	
 	  var homeDir;
 	  if (isWindows) {
-	    homeDir = ({}).USERPROFILE;
+	    homeDir = __webpack_require__(77).BFSRequire('process').env.USERPROFILE;
 	  } else {
-	    homeDir = ({}).HOME;
+	    homeDir = __webpack_require__(77).BFSRequire('process').env.HOME;
 	  }
 	
 	  var paths = ['.'];
@@ -628,7 +628,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    paths.unshift(path.resolve(homeDir, '.node_modules'));
 	  }
 	
-	  var nodePath = ({})['NODE_PATH'];
+	  var nodePath = __webpack_require__(77).BFSRequire('process').env['NODE_PATH'];
 	  if (nodePath) {
 	    paths = nodePath.split(path.delimiter).filter(function (path) {
 	      return !!path;
@@ -654,7 +654,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // preloaded modules.
 	  var parent = new Module('internal/preload', null);
 	  try {
-	    parent.paths = Module._nodeModulePaths(({"execPath":'/node',"env":{}}).cwd());
+	    parent.paths = Module._nodeModulePaths(__webpack_require__(77).BFSRequire('process').cwd());
 	  } catch (e) {
 	    if (e.code !== 'ENOENT') {
 	      throw e;
@@ -2200,19 +2200,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 79 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
 	module.exports.deprecate = function () {};
 	module.exports.printDeprecationMessage = function () {};
 	module.exports.debuglog = function () {
 	  return function () {};
-	};
-	var BrowserFS = __webpack_require__(77);
-	var stat = BrowserFS.BFSRequire('fs').statSync;
-	module.exports.internalModuleStat = function (file) {
-	  try {} catch (error) {}
 	};
 
 /***/ },
