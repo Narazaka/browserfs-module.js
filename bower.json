@@ -15,6 +15,7 @@
     "/coverage",
     "/doc",
     "/src",
+    "/node",
     "/.*",
     "appveyor.yml",
     "gulpfile.babel.js",
