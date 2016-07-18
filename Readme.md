@@ -30,9 +30,6 @@ bower install browserfs-module
 ## Usage
 
 ```html
-<script src="browserfs-module.js"></script>
-var Module = browserfsModule.Module;
-
 <script src="browserfs.js"></script>
 <script src="browserfs-module.js"></script>
 <script>
@@ -40,13 +37,13 @@ var fsBase = new BrowserFS.FileSystem.InMemory();
 BrowserFS.initialize(fsBase);
 
 var fs = BrowserFS.BFSRequire('fs');
-fs.writeFileSync('/a.js', 'module.exports = function() {return require("b")()};');
+fs.writeFileSync('/main.js', 'module.exports = require("sub");');
 fs.mkdirSync('/node_modules');
-fs.writeFileSync('/node_modules/b.js' ,'module.exports = function() {return "bb"};');
+fs.writeFileSync('/node_modules/sub.js' ,'module.exports = "sub required!";');
 
 Module = browserfsModule.Module;
-var a = Module._load("/a");
-console.log(a()); // "bb"
+var main = Module._load("/main");
+console.log(main); // "sub required!"
 </script>
 ```
 
