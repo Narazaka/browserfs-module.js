@@ -41,13 +41,6 @@ module.exports.printDeprecationMessage = function() {};
 module.exports.debuglog = function() {
   return function() {};
 };
-var BrowserFS = require('browserfs');
-var stat = BrowserFS.BFSRequire('fs').statSync;
-module.exports.internalModuleStat = function(file) {
-  try {
-  } catch (error) {
-  }
-};
 `;
 src.new("util.js").writeFileSync(util);
 
