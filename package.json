@@ -3,6 +3,12 @@
   "version": "0.0.2",
   "description": "require() with BrowserFS",
   "main": "browserfs-module.js",
+  "keywords": [
+    "browserfs",
+    "browser",
+    "require",
+    "module"
+  ],
   "dependencies": {
     "browserfs": "^0.5.12"
   },
