@@ -3,6 +3,7 @@ branches:
   except:
     - gh-pages
 install:
+  - git submodule update --init --recursive
   - ps: Install-Product node $env:nodejs_version
   - node --version
   - npm install -g npm
