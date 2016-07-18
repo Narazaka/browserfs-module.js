@@ -1,10 +1,10 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("BrowserFS"));
+		module.exports = factory(require("browserfs"));
 	else if(typeof define === 'function' && define.amd)
-		define(["BrowserFS"], factory);
+		define(["browserfs"], factory);
 	else if(typeof exports === 'object')
-		exports["browserfsModule"] = factory(require("BrowserFS"));
+		exports["browserfsModule"] = factory(require("browserfs"));
 	else
 		root["browserfsModule"] = factory(root["BrowserFS"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_77__) {
@@ -1134,6 +1134,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // Thrash, waste and sodomy: IE GC bug
 	  var iframe = __webpack_require__(22)('iframe')
 	    , i      = enumBugKeys.length
+	    , lt     = '<'
 	    , gt     = '>'
 	    , iframeDocument;
 	  iframe.style.display = 'none';
@@ -1143,7 +1144,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // html.removeChild(iframe);
 	  iframeDocument = iframe.contentWindow.document;
 	  iframeDocument.open();
-	  iframeDocument.write('<script>document.F=Object</script' + gt);
+	  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
 	  iframeDocument.close();
 	  createDict = iframeDocument.F;
 	  while(i--)delete createDict[PROTOTYPE][enumBugKeys[i]];
@@ -1161,6 +1162,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  } else result = createDict();
 	  return Properties === undefined ? result : dPs(result, Properties);
 	};
+
 
 /***/ },
 /* 30 */
@@ -1496,7 +1498,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	var dP          = __webpack_require__(16).f
 	  , create      = __webpack_require__(29)
-	  , hide        = __webpack_require__(15)
 	  , redefineAll = __webpack_require__(54)
 	  , ctx         = __webpack_require__(13)
 	  , anInstance  = __webpack_require__(55)

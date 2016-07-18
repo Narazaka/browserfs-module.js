@@ -48,7 +48,12 @@ module.exports = {
   },
   externals: [
     {
-      browserfs: 'BrowserFS',
+      browserfs: {
+        root: 'BrowserFS',
+        commonjs: 'browserfs',
+        commonjs2: 'browserfs',
+        amd: 'browserfs',
+      },
     }
   ],
 };
