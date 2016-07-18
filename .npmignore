@@ -1,0 +1,14 @@
+**/.sw?
+**/.*.sw?
+node_modules
+bower_components
+npm-debug.log
+/coverage
+/doc
+/src
+/.*
+appveyor.yml
+gulpfile.babel.js
+karma.conf.js
+webpack.config.js
+esdoc.json

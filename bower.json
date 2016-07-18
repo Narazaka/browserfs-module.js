@@ -1,0 +1,26 @@
+{
+  "name": "browserfs-module",
+  "description": "require() with BrowserFS",
+  "dependencies": {
+  },
+  "main": [
+    "./browserfs-module.js"
+  ],
+  "ignore": [
+    "**/.sw?",
+    "**/.*.sw?",
+    "bower_components",
+    "node_modules",
+    "npm-debug.log",
+    "/coverage",
+    "/doc",
+    "/src",
+    "/.*",
+    "appveyor.yml",
+    "gulpfile.babel.js",
+    "karma.conf.js",
+    "webpack.config.js",
+    "esdoc.json"
+  ],
+  "license": "MIT"
+}

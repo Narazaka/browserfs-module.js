@@ -1,0 +1,3 @@
+--compilers js:babel-register
+--ui mocha-lazy-bdd
+--recursive
