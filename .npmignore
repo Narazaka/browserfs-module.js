@@ -11,5 +11,6 @@ npm-debug.log
 appveyor.yml
 gulpfile.babel.js
 karma.conf.js
+karma.conf.babel.js
 webpack.config.js
 esdoc.json
