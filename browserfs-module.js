@@ -2262,7 +2262,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	NativeModule.wrap = function (script) {
-	  return NativeModule.wrapper[0] + script + NativeModule.wrapper[1];
+	  return 'var process = ' + function () {
+	    return __webpack_require__(77).BFSRequire('process');
+	  }.toString() + '();\n' + NativeModule.wrapper[0] + script + NativeModule.wrapper[1];
 	};
 	
 	NativeModule.wrapper = ['(function (exports, require, module, __filename, __dirname) { ', '\n});'];

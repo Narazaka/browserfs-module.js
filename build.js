@@ -17,6 +17,7 @@ const native_module = bootstrap_node
   .replace(/process\.moduleLoadList/m, "[]")
   .replace(/process\.execArgv/m, "[]")
   .replace(/\bprocess\b/g, "require('browserfs').BFSRequire('process')")
+  .replace(/(NativeModule\.wrapper\[0\])/, "'var process = ' + function(){return require('browserfs').BFSRequire('process')}.toString() + '();\\n' + $1")
   + "module.exports = NativeModule;";
 
 src.new("native_module.js").writeFileSync(native_module);
