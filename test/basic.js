@@ -5,7 +5,6 @@ const Module = require('../browserfs-module.js');
 
 import assert from 'power-assert';
 
-/** @test {GhostKernel} */
 describe('browserfsModule.Module', function() {
   before(function() {
     // BrowserFS.initialize(this.fs);
@@ -16,8 +15,21 @@ describe('browserfsModule.Module', function() {
   });
   lazy('fs', function() { return new BrowserFS.FileSystem.InMemory() });
   subject(function() { return Module._load("/a") });
-  /** @test {GhostKernel#constructor} */
   context('_load', function() {
     it('basic', function() { assert(this.subject() === "bb") });
+  });
+});
+
+describe('require("fs")', function() {
+  before(function() {
+    // BrowserFS.initialize(this.fs);
+    const fs = BrowserFS.BFSRequire('fs');
+    fs.writeFileSync('/c.js' ,'var fs = require("fs"); module.exports = function() {return fs.readFileSync("./file", {encoding: "utf8"})};');
+    fs.writeFileSync('/file' ,'file content');
+  });
+  lazy('fs', function() { return new BrowserFS.FileSystem.InMemory() });
+  subject(function() { return Module._load("/c") });
+  context('_load', function() {
+    it('basic', function() { assert(this.subject() === "file content") });
   });
 });

@@ -2095,7 +2095,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 78 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -2139,7 +2139,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	NativeModule.exists = function (id) {
-	  return NativeModule._source.hasOwnProperty(id);
+	  return __webpack_require__(77).BFSRequire(id) != null;
 	};
 	
 	var EXPOSE_INTERNALS = [].some(function (arg) {
@@ -2173,23 +2173,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	NativeModule.wrapper = ['(function (exports, require, module, __filename, __dirname) { ', '\n});'];
 	
 	NativeModule.prototype.compile = function () {
-	  var source = NativeModule.getSource(this.id);
-	  source = NativeModule.wrap(source);
-	
-	  this.loading = true;
-	
-	  try {
-	    var fn = runInThisContext(source, {
-	      filename: this.filename,
-	      lineOffset: 0,
-	      displayErrors: true
-	    });
-	    fn(this.exports, NativeModule.require, this, this.filename);
-	
-	    this.loaded = true;
-	  } finally {
-	    this.loading = false;
-	  }
+	  this.exports = __webpack_require__(77).BFSRequire(this.id);
 	};
 	
 	NativeModule.prototype.cache = function () {

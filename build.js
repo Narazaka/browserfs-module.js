@@ -12,6 +12,8 @@ const bootstrap_node = node_root.new("lib/internal/bootstrap_node.js").readFileS
 const native_module = bootstrap_node
   .match(/(function NativeModule[\s\S]+)(?=startup\(\))/)[1]
   .replace(/(NativeModule\._source) = process\.binding.*;/, "$1 = {};")
+  .replace(/(NativeModule\.exists = function\(id\) {)[^}]*(};)/, "$1return require('browserfs').BFSRequire(id) != null;$2")
+  .replace(/(NativeModule\.prototype\.compile = function\(\) {)[^]*?(};)/, "$1this.exports = require('browserfs').BFSRequire(this.id);$2")
   .replace(/process\.moduleLoadList/m, "[]")
   .replace(/process\.execArgv/m, "[]")
   .replace(/\bprocess\b/g, "require('browserfs').BFSRequire('process')")
