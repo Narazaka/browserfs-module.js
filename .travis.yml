@@ -3,7 +3,6 @@ node_js:
   - 5
 os:
   - linux
-  - osx
 before_script:
   - export DISPLAY=:99.0
   - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then export CHROME_BIN=chromium-browser ; fi
