@@ -22,6 +22,7 @@ const native_module = bootstrap_node
 src.new("native_module.js").writeFileSync(native_module);
 
 const module_js = "const BrowserFS = require('browserfs');\n"
+  + "require('core-js/fn/string/starts-with');\n"
   + node_root.new("lib/module.js").readFileSync({encoding: "utf8"})
   .replace(/'native_module'/, "'./native_module'")
   .replace(/'util'/, "'./util'")
