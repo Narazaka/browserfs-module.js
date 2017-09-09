@@ -1,4 +1,4 @@
-const { FileSystemObject } = require("fso");
+const FileSystemObject = require("fso").FileSystemObject;
 const webpack = require('webpack');
 const webpack_config = require('./webpack.config');
 
