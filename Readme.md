@@ -13,7 +13,15 @@
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/Narazaka/browserfs-module.js?svg=true)](https://ci.appveyor.com/project/Narazaka/browserfs-module-js)
 [![Code Climate](https://codeclimate.com/github/Narazaka/browserfs-module.js/badges/gpa.svg)](https://codeclimate.com/github/Narazaka/browserfs-module.js)
 
-[require()](https://github.com/nodejs/node) with [BrowserFS](https://github.com/jvilk/BrowserFS)
+The [Node.js](https://github.com/nodejs/node)' `require()` on the browser!
+
+## Motivation
+
+Browsers do not support the `require()` API on Node.js, since they do not have File Systems. (And we are playing with magic `require()` processors, like webpack).
+
+But we can make fake File System on browsers by using [BrowserFS](https://github.com/jvilk/BrowserFS).
+
+Now, why not use the real `require()`?
 
 ## Install
 
@@ -28,6 +36,10 @@ bower install browserfs-module
 ```
 
 ## Usage
+
+`node ./foo.js` corresponds to `Module._load ('./foo.js')`.
+
+You can use `require()` in `./foo.js` just like on Node.js.
 
 ```html
 <script src="browserfs.js"></script>
