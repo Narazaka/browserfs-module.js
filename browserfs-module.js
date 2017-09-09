@@ -264,8 +264,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var basePath = path.resolve(curPath, request);
 	    var filename;
 	
+	    var rc = stat(basePath);
 	    if (!trailingSlash) {
-	      var rc = stat(basePath);
 	      if (rc === 0) {
 	        // File.
 	        if (preserveSymlinks && !isMain) {
@@ -286,12 +286,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	
-	    if (!filename) {
+	    if (!filename && rc === 1) {
+	      // Directory.
 	      if (exts === undefined) exts = (0, _keys2.default)(Module._extensions);
 	      filename = tryPackage(basePath, exts, isMain);
 	    }
 	
-	    if (!filename) {
+	    if (!filename && rc === 1) {
+	      // Directory.
 	      // try it with each of the extensions at "index"
 	      if (exts === undefined) exts = (0, _keys2.default)(Module._extensions);
 	      filename = tryExtensions(path.resolve(basePath, 'index'), exts, isMain);
