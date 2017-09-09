@@ -1,11 +1,11 @@
-const fso = require("fso");
+const { FileSystemObject } = require("fso");
 const webpack = require('webpack');
 const webpack_config = require('./webpack.config');
 
 const node_dir = ".";
 
-const node_root = fso.new("./node");
-const src = fso.new("./src");
+const node_root = new FileSystemObject("./node");
+const src = new FileSystemObject("./src");
 src.mkpathSync();
 
 const bootstrap_node = node_root.new("lib/internal/bootstrap_node.js").readFileSync({encoding: "utf8"});
