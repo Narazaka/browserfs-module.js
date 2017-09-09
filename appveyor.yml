@@ -18,4 +18,4 @@ build: off
 deploy: off
 environment:
   matrix:
-    - nodejs_version: 5
+    - nodejs_version: 8
