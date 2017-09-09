@@ -32,7 +32,7 @@ const module_js = "const BrowserFS = require('browserfs');\n"
   .replace(/process.binding\('fs'\)/g, "require('./binding_fs')")
   .replace(/require\('(fs|path)'\)/g, "BrowserFS.BFSRequire('$1')")
   .replace(/\[path.resolve\(process.execPath.*\]/m, "['.']")
-  .replace(/\bprocess\b/g, "require('browserfs').BFSRequire('process')")
+  .replace(/\bprocess\b/g, "BrowserFS.BFSRequire('process')")
   .replace(/const preserveSymlinks.*/, "const preserveSymlinks = true;");
 src.new("module.js").writeFileSync(module_js);
 

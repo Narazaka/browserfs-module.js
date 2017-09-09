@@ -4,15 +4,15 @@ var path = require('path');
 module.exports = {
   devtool: 'source-map',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: 'babel',
+        use: 'babel-loader',
         exclude: /node_modules/,
       },
       {
         test: /\.json$/,
-        loader: 'json',
+        use: 'json-loader',
       },
     ],
   },
@@ -27,9 +27,6 @@ module.exports = {
     libraryTarget: 'umd',
   },
   plugins: [
-    new webpack.ResolverPlugin(
-      new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(".bower.json", ["main"])
-    ),
     new webpack.DefinePlugin({
       'process': {
         execPath: "'/node'",
@@ -37,15 +34,9 @@ module.exports = {
       },
       'NativeModule._source': "{}",
     }),
-    new webpack.optimize.DedupePlugin(),
 //    new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
   ],
-  resolve: {
-    root: [
-      path.join(__dirname, "bower_components"),
-    ],
-  },
   externals: [
     {
       browserfs: {

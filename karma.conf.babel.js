@@ -34,14 +34,12 @@ module.exports = (config) =>
     webpack: {
       devtool: 'inline-source-map',
       module: {
-        loaders: webpack_config.module.loaders,
-        postLoaders: [
-          {
-            test: /\.js$/,
-            include: path.resolve('./src/'),
-            loader: 'istanbul-instrumenter'
-          },
-        ],
+        rules: webpack_config.module.rules.concat({
+          test: /\.js$/,
+          include: path.resolve('./src/'),
+          use: 'istanbul-instrumenter-loader',
+          enforce: 'pre',
+        }),
       },
     },
     babelPreprocessor: {
