@@ -10,7 +10,8 @@
     "module"
   ],
   "dependencies": {
-    "browserfs": "^1.4.3"
+    "browserfs": "^1.4.3",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -42,7 +43,9 @@
   },
   "scripts": {
     "test": "mocha && karma start --single-run",
-    "build": "node --harmony ./build.js"
+    "build": "node --harmony ./build.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -53,5 +56,6 @@
   "bugs": {
     "url": "https://github.com/Narazaka/browserfs-module.js/issues"
   },
-  "homepage": "https://github.com/Narazaka/browserfs-module.js#readme"
+  "homepage": "https://github.com/Narazaka/browserfs-module.js#readme",
+  "snyk": true
 }
